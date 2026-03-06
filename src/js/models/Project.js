@@ -11,6 +11,25 @@ export class Project {
         Project.#projectCount++;
     }
 
+    static fromJSON({ id, title, todoList = [] } = {}) {
+        const project = new Project(title);
+        project.#id = id;
+
+        todoList.forEach((plainTodo) => {
+            project.addTodo(Todo.fromJSON(plainTodo));
+        });
+
+        return project;
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            title: this.title,
+            todoList: this.#todoList,
+        };
+    }
+
     static get projectCount() {
         return Project.#projectCount;
     }
@@ -42,20 +61,25 @@ export class Project {
         this.#title = newTitle;
     }
 
+    getTodos() {
+        return this.#todoList;
+    }
+
     addTodo(todo) {
         if (!(todo instanceof Todo)) {
             throw new Error("Must be an instance of Todo");
         }
+
         this.#todoList.push(todo);
     }
 
-    removeTodo(todo) {
-        if (!(todo instanceof Todo)) {
-            throw new Error("Must be an instance of Todo");
+    removeTodo(todoId) {
+        if (!todoId || typeof todoId !== "string") {
+            throw new Error("todoId must be a string");
         }
 
         const todoIndex = this.#todoList.findIndex(
-            (item) => item.id === todo.id,
+            (item) => item.id === todoId,
         );
 
         if (todoIndex !== -1) {
@@ -73,6 +97,7 @@ export class Project {
         if (this.#todoList.length === 0) {
             return 0;
         }
+
         return (this.getCompletedTodoCount() / this.#todoList.length) * 100;
     }
 }
