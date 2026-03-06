@@ -24,6 +24,35 @@ export class Todo {
         Todo.#todoCount++;
     }
 
+    static fromJSON({
+        id,
+        title,
+        description,
+        dueDateTime,
+        priority,
+        notes,
+        checklist,
+    } = {}) {
+        const todo = new Todo(title, description, dueDateTime, priority, notes);
+
+        todo.#id = id;
+        todo.#checklist = checklist;
+
+        return todo;
+    }
+
+    toJSON() {
+        return {
+            id: this.id,
+            title: this.title,
+            description: this.description,
+            dueDateTime: this.dueDateTime,
+            priority: this.priority,
+            notes: this.notes,
+            checklist: this.checklist,
+        };
+    }
+
     static get todoCount() {
         return Todo.#todoCount;
     }
@@ -47,9 +76,11 @@ export class Todo {
         ) {
             return;
         }
+
         if (typeof newTitle !== "string" || newTitle.trim().length <= 0) {
             throw new Error("Title must be a valid, non-empty string.");
         }
+
         this.#title = newTitle;
     }
 
@@ -77,6 +108,7 @@ export class Todo {
         if (typeof newDescription !== "string") {
             throw new Error("Description must be a string.");
         }
+
         this.#description = newDescription;
     }
 
@@ -169,6 +201,7 @@ export class Todo {
         if (typeof newNotes !== "string") {
             throw new Error("Notes must be a string");
         }
+
         this.#notes = newNotes;
     }
 
