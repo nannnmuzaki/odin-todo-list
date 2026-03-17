@@ -1,4 +1,5 @@
 import { parseISO, isValid, isBefore } from "date-fns";
+import { TodoPriority } from "../enums/TodoPriority.js";
 
 export class Todo {
     #id = crypto.randomUUID();
@@ -11,9 +12,10 @@ export class Todo {
 
     static #todoCount = 0;
     static #checkedCount = 0;
-    static PRIORITY_HIGH = "High";
-    static PRIORITY_MEDIUM = "Medium";
-    static PRIORITY_LOW = "Low";
+    static PRIORITY_NONE = TodoPriority.NONE;
+    static PRIORITY_LOW = TodoPriority.LOW;
+    static PRIORITY_MEDIUM = TodoPriority.MEDIUM;
+    static PRIORITY_HIGH = TodoPriority.HIGH;
 
     constructor(title, description, dueDateTime, priority, notes) {
         this.title = title;
@@ -163,9 +165,10 @@ export class Todo {
         }
 
         const validPriorities = [
-            Todo.PRIORITY_HIGH,
-            Todo.PRIORITY_MEDIUM,
+            Todo.PRIORITY_NONE,
             Todo.PRIORITY_LOW,
+            Todo.PRIORITY_MEDIUM,
+            Todo.PRIORITY_HIGH,
         ];
 
         if (
