@@ -1,5 +1,10 @@
+import { DialogForm } from "../components/dialog-form.js";
+import { FormType } from "../components/dialog-form.js";
+
 export function initializeLayout() {
     const content = document.querySelector("#content");
+    const projectDialogForm = DialogForm(FormType.PROJECT);
+    const todoDialogForm = DialogForm(FormType.TODO);
 
     const mainGrid = document.createElement("div");
     mainGrid.className = "main-grid";
@@ -57,6 +62,9 @@ export function initializeLayout() {
     const addProjectBtn = document.createElement("button");
     addProjectBtn.className = "action-btn";
     addProjectBtn.textContent = "Add Project +";
+    addProjectBtn.addEventListener("click", () => {
+        projectDialogForm.showModal();
+    });
 
     actionsWrapper.appendChild(addProjectBtn);
 
@@ -83,4 +91,6 @@ export function initializeLayout() {
     todoList.appendChild(todo2);
 
     todosWrapper.appendChild(todoList);
+    mainGrid.appendChild(projectDialogForm);
+    mainGrid.appendChild(todoDialogForm);
 }
