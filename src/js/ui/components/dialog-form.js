@@ -44,18 +44,18 @@ export function DialogForm(formType) {
 
         form.appendChild(inputField);
 
-        const projectNameLabel = document.createElement("label");
-        projectNameLabel.setAttribute("for", "projectName");
-        projectNameLabel.textContent = "Project Name";
+        const projectTitleLabel = document.createElement("label");
+        projectTitleLabel.setAttribute("for", "projectTitle");
+        projectTitleLabel.textContent = "Project Title";
 
-        inputField.appendChild(projectNameLabel);
+        inputField.appendChild(projectTitleLabel);
 
-        const projectNameInput = document.createElement("input");
-        projectNameInput.type = "text";
-        projectNameInput.name = "projectName";
-        projectNameInput.id = "projectName";
+        const projectTitleInput = document.createElement("input");
+        projectTitleInput.type = "text";
+        projectTitleInput.name = "projectTitle";
+        projectTitleInput.id = "projectTitle";
 
-        inputField.appendChild(projectNameInput);
+        inputField.appendChild(projectTitleInput);
 
         const dialogFormActions = document.createElement("div");
         dialogFormActions.className = "dialog-form-actions";
