@@ -1,5 +1,7 @@
 import { DialogForm } from "../components/dialog-form.js";
 import { DialogFormType } from "../../enums/DialogFormType.js";
+import folderPlusSvg from "../../../assets/icons/folder-plus.svg";
+import calendarPlus2Svg from "../../../assets/icons/calendar-plus-2.svg";
 
 export function initializeLayout() {
     const content = document.querySelector("#content");
@@ -61,19 +63,35 @@ export function initializeLayout() {
 
     const addProjectBtn = document.createElement("button");
     addProjectBtn.className = "action-btn";
-    addProjectBtn.textContent = "Add Project +";
     addProjectBtn.addEventListener("click", () => {
         projectDialogForm.showModal();
     });
+
+    const addProjectBtnIcon = document.createElement("div");
+    addProjectBtnIcon.className = "btn-icon";
+    addProjectBtnIcon.innerHTML = folderPlusSvg;
+
+    addProjectBtn.appendChild(addProjectBtnIcon);
+
+    addProjectBtn.appendChild(document.createElement("span")).textContent =
+        "Add Project";
 
     actionsWrapper.appendChild(addProjectBtn);
 
     const addTodoBtn = document.createElement("button");
     addTodoBtn.className = "action-btn";
-    addTodoBtn.textContent = "Add Todo +";
     addTodoBtn.addEventListener("click", () => {
         todoDialogForm.showModal();
     });
+
+    const addTodoBtnIcon = document.createElement("div");
+    addTodoBtnIcon.className = "btn-icon";
+    addTodoBtnIcon.innerHTML = calendarPlus2Svg;
+
+    addTodoBtn.appendChild(addTodoBtnIcon);
+
+    addTodoBtn.appendChild(document.createElement("span")).textContent =
+        "Add Todo";
 
     actionsWrapper.appendChild(addTodoBtn);
 
