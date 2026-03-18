@@ -1,7 +1,7 @@
 import { DialogFormType } from "../../enums/DialogFormType.js";
 import { TodoPriority } from "../../enums/TodoPriority.js";
 
-export function DialogForm(formType) {
+export function DialogForm(formType, initialData, onSubmitCallback) {
     const dialog = document.createElement("dialog");
     dialog.className = "dialog";
     dialog.setAttribute("closedby", "any");
@@ -45,7 +45,31 @@ export function DialogForm(formType) {
         const submitBtn = document.createElement("button");
         submitBtn.type = "submit";
         submitBtn.className = "action-btn";
-        submitBtn.textContent = "Add Project";
+
+        if (initialData && typeof initialData.title === "string") {
+            projectTitleInput.value = initialData.title;
+        }
+
+        submitBtn.textContent = initialData ? "Update Project" : "Add Project";
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            if (onSubmitCallback) {
+                try {
+                    onSubmitCallback(data);
+                    dialog.close();
+                } catch (error) {
+                    formError.textContent = error.message;
+                    formError.style.display = "block";
+                }
+            } else {
+                dialog.close();
+            }
+        });
 
         dialogFormActions.appendChild(submitBtn);
 
@@ -166,10 +190,37 @@ export function DialogForm(formType) {
 
         form.appendChild(dialogFormActions);
 
+        if (initialData && typeof initialData.title === "string") {
+            todoTitleInput.value = initialData.title;
+            todoDescriptionInput.value = initialData.description || "";
+            todoNotesInput.value = initialData.notes || "";
+            todoPrioritySelect.value = initialData.priority;
+            todoDueDatetimeInput.value = initialData.dueDateTime;
+        }
+
         const submitBtn = document.createElement("button");
         submitBtn.type = "submit";
         submitBtn.className = "action-btn";
-        submitBtn.textContent = "Add Todo";
+        submitBtn.textContent = initialData ? "Update Todo" : "Add Todo";
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            if (onSubmitCallback) {
+                try {
+                    onSubmitCallback(data);
+                    dialog.close();
+                } catch (error) {
+                    formError.textContent = error.message;
+                    formError.style.display = "block";
+                }
+            } else {
+                dialog.close();
+            }
+        });
 
         dialogFormActions.appendChild(submitBtn);
 
@@ -182,9 +233,27 @@ export function DialogForm(formType) {
         });
 
         dialogFormActions.appendChild(cancelBtn);
+    } else if (formType === DialogFormType.DELETE_PROJECT_CONFIRM) {
+        if (initialData && typeof initialData.title === "string") {
+            // bla bla bla
+        } else {
+            throw new Error("No Project is selected");
+        }
+    } else if (formType === DialogFormType.DELETE_TODO_CONFIRM) {
+        if (initialData && typeof initialData.title === "string") {
+            // bla bla bla
+        } else {
+            throw new Error("No Todo is selected");
+        }
     } else {
-        throw new Error("Must be a valid type of form");
+        throw new Error("Must be a valid type of Dialog Form");
     }
+
+    dialog.addEventListener("close", () => {
+        form.reset();
+        formError.style.display = "none";
+        formError.textContent = "";
+    });
 
     return dialog;
 }

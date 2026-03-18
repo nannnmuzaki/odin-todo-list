@@ -1,4 +1,6 @@
 export const DialogFormType = Object.freeze({
     PROJECT: "PROJECT",
     TODO: "TODO",
+    DELETE_PROJECT_CONFIRM: "DELETE_PROJECT_CONFIRM",
+    DELETE_TODO_CONFIRM: "DELETE_TODO_CONFIRM",
 });
