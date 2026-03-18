@@ -11,6 +11,33 @@ export function createProject(title) {
     storeProjects(myProjects);
 }
 
+export function updateProject(projectId, { title } = {}) {
+    if (typeof projectId !== "string") {
+        throw new Error("projectId must be a string");
+    }
+
+    const project = myProjects.find((p) => p.id === projectId);
+
+    if (!project) return;
+
+    project.title = title;
+
+    storeProjects(myProjects);
+}
+
+export function deleteProject(projectId) {
+    if (typeof projectId !== "string") {
+        throw new Error("projectId must be a string");
+    }
+
+    const projectIndex = myProjects.findIndex((p) => p.id === projectId);
+
+    if (projectIndex !== -1) {
+        myProjects.splice(projectIndex, 1);
+        storeProjects(myProjects);
+    }
+}
+
 export function addTodoToProject(
     projectId,
     { title, description, dueDateTime, priority, notes } = {},
@@ -20,6 +47,9 @@ export function addTodoToProject(
     }
 
     const project = myProjects.find((p) => p.id === projectId);
+
+    if (!project) return;
+
     const newTodo = new Todo(title, description, dueDateTime, priority, notes);
 
     project.addTodo(newTodo);
@@ -40,7 +70,12 @@ export function updateTodoFromProject(
     }
 
     const project = myProjects.find((p) => p.id === projectId);
+
+    if (!project) return;
+
     const todo = project.getTodos().find((t) => t.id === todoId);
+
+    if (!todo) return;
 
     todo.title = title;
     todo.description = description;
@@ -57,6 +92,9 @@ export function deleteTodoFromProject(projectId, todoId) {
     }
 
     const project = myProjects.find((p) => p.id === projectId);
+
+    if (!project) return;
+
     project.removeTodo(todoId);
     storeProjects(myProjects);
 }
