@@ -234,14 +234,88 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
 
         dialogFormActions.appendChild(cancelBtn);
     } else if (formType === DialogFormType.DELETE_PROJECT_CONFIRM) {
+        dialog.setAttribute("form-type", DialogFormType.DELETE_PROJECT_CONFIRM);
+
         if (initialData && typeof initialData.title === "string") {
-            // bla bla bla
+            const warningText = document.createElement("p");
+            warningText.textContent = `Are you sure you want to delete the "${initialData.title}" project and its todos? This cannot be undone.`;
+            form.appendChild(warningText);
+
+            const dialogFormActions = document.createElement("div");
+            dialogFormActions.className = "dialog-form-actions";
+            form.appendChild(dialogFormActions);
+
+            const submitBtn = document.createElement("button");
+            submitBtn.type = "submit";
+            submitBtn.className = "action-btn delete-btn";
+            submitBtn.textContent = "Delete Project";
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (onSubmitCallback) {
+                    try {
+                        onSubmitCallback();
+                        dialog.close();
+                    } catch (error) {
+                        formError.textContent = error.message;
+                        formError.style.display = "block";
+                    }
+                } else {
+                    dialog.close();
+                }
+            });
+
+            dialogFormActions.appendChild(submitBtn);
+
+            const cancelBtn = document.createElement("button");
+            cancelBtn.type = "button";
+            cancelBtn.className = "action-btn";
+            cancelBtn.textContent = "Cancel";
+            cancelBtn.addEventListener("click", () => dialog.close());
+            dialogFormActions.appendChild(cancelBtn);
         } else {
             throw new Error("No Project is selected");
         }
     } else if (formType === DialogFormType.DELETE_TODO_CONFIRM) {
+        dialog.setAttribute("form-type", DialogFormType.DELETE_PROJECT_CONFIRM);
+
         if (initialData && typeof initialData.title === "string") {
-            // bla bla bla
+            const warningText = document.createElement("p");
+            warningText.textContent = `Are you sure you want to delete the "${initialData.title}" todo? This cannot be undone.`;
+            form.appendChild(warningText);
+
+            const dialogFormActions = document.createElement("div");
+            dialogFormActions.className = "dialog-form-actions";
+            form.appendChild(dialogFormActions);
+
+            const submitBtn = document.createElement("button");
+            submitBtn.type = "submit";
+            submitBtn.className = "action-btn delete-btn";
+            submitBtn.textContent = "Delete Todo";
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (onSubmitCallback) {
+                    try {
+                        onSubmitCallback();
+                        dialog.close();
+                    } catch (error) {
+                        formError.textContent = error.message;
+                        formError.style.display = "block";
+                    }
+                } else {
+                    dialog.close();
+                }
+            });
+
+            dialogFormActions.appendChild(submitBtn);
+
+            const cancelBtn = document.createElement("button");
+            cancelBtn.type = "button";
+            cancelBtn.className = "action-btn";
+            cancelBtn.textContent = "Cancel";
+            cancelBtn.addEventListener("click", () => dialog.close());
+            dialogFormActions.appendChild(cancelBtn);
         } else {
             throw new Error("No Todo is selected");
         }
