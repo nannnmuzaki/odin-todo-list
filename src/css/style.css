@@ -161,6 +161,16 @@ h6 {
     transition: all 0.2 ease-in-out;
 }
 
+.project.active {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0;
+    border-bottom: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: all 0.2 ease-in-out;
+}
+
 .project:hover {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -196,7 +206,6 @@ h6 {
     padding: 1rem 2rem;
     gap: 1rem;
     width: 100%;
-    height: 100%;
     overflow-y: scroll;
     align-items: flex-start;
     scrollbar-color: #fff #000;
@@ -207,6 +216,7 @@ h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
     gap: 0.25rem;
     padding: 1rem;
     border: 2px solid black;
@@ -271,7 +281,6 @@ h6 {
 .form > .form-error {
     display: none;
     padding: 1rem 1.5rem;
-    border-radius: 1rem;
     background-color: hsl(0, 68%, 74%);
 }
 
