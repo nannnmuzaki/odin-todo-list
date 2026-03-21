@@ -72,14 +72,7 @@ export class Todo {
     }
 
     set title(newTitle) {
-        if (
-            (newTitle === null || newTitle === undefined) &&
-            this.#title !== undefined
-        ) {
-            return;
-        }
-
-        if (typeof newTitle !== "string" || newTitle.trim().length <= 0) {
+        if (typeof newTitle !== "string" || !newTitle.trim()) {
             throw new Error("Title must be a valid, non-empty string.");
         }
 
@@ -91,24 +84,13 @@ export class Todo {
     }
 
     set description(newDescription) {
-        if (
-            (newDescription === null || newDescription === undefined) &&
-            this.#description !== undefined
-        ) {
-            return;
-        }
-
-        if (
-            !newDescription ||
-            (typeof newDescription === "string" &&
-                newDescription.trim().length <= 0)
-        ) {
-            this.#description = "";
-            return;
-        }
-
         if (typeof newDescription !== "string") {
             throw new Error("Description must be a string.");
+        }
+
+        if (!newDescription.trim()) {
+            this.#description = "";
+            return;
         }
 
         this.#description = newDescription;
@@ -119,15 +101,11 @@ export class Todo {
     }
 
     set dueDateTime(newDueDateTimeString) {
-        if (
-            (newDueDateTimeString === null ||
-                newDueDateTimeString === undefined) &&
-            this.#dueDateTime !== undefined
-        ) {
-            return;
+        if (typeof newDueDateTimeString !== "string") {
+            throw new Error("Due Datetime Must be a valid string");
         }
 
-        if (!newDueDateTimeString) {
+        if (!newDueDateTimeString.trim()) {
             this.#dueDateTime = "";
             return;
         }
@@ -149,19 +127,8 @@ export class Todo {
     }
 
     set priority(newPriority) {
-        if (
-            (newPriority === null || newPriority === undefined) &&
-            this.#priority !== undefined
-        ) {
-            return;
-        }
-
-        if (
-            !newPriority ||
-            (typeof newPriority === "string" && newPriority.trim().length <= 0)
-        ) {
-            this.#priority = "";
-            return;
+        if (typeof newPriority !== "string") {
+            throw new Error("Priority must be a valid string");
         }
 
         const validPriorities = [
@@ -186,23 +153,12 @@ export class Todo {
     }
 
     set notes(newNotes) {
-        if (
-            (newNotes === null || newNotes === undefined) &&
-            this.#notes !== undefined
-        ) {
-            return;
-        }
-
-        if (
-            !newNotes ||
-            (typeof newNotes === "string" && newNotes.trim().length <= 0)
-        ) {
-            this.#notes = "";
-            return;
-        }
-
         if (typeof newNotes !== "string") {
             throw new Error("Notes must be a string");
+        }
+
+        if (!newNotes.trim()) {
+            this.#notes = "";
         }
 
         this.#notes = newNotes;

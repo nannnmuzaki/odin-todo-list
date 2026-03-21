@@ -4,6 +4,8 @@ export class Project {
     #id = crypto.randomUUID();
     #title;
     #todoList = [];
+    #todoCount = 0;
+    #completedTodo = 0;
     static #projectCount = 0;
 
     constructor(title) {
@@ -11,13 +13,22 @@ export class Project {
         Project.#projectCount++;
     }
 
-    static fromJSON({ id, title, todoList = [] } = {}) {
+    static fromJSON({
+        id,
+        title,
+        todoList = [],
+        todoCount,
+        todoCompleted,
+    } = {}) {
         const project = new Project(title);
         project.#id = id;
 
         todoList.forEach((plainTodo) => {
             project.addTodo(Todo.fromJSON(plainTodo));
         });
+
+        project.#todoCount = todoCount;
+        project.todoCompleted = todoCompleted;
 
         return project;
     }
@@ -27,6 +38,8 @@ export class Project {
             id: this.id,
             title: this.title,
             todoList: this.#todoList,
+            todoCount: this.#todoCount,
+            completedTodo: this.#completedTodo,
         };
     }
 
@@ -43,18 +56,7 @@ export class Project {
     }
 
     set title(newTitle) {
-        if (
-            (newTitle === null || newTitle == undefined) &&
-            this.#title !== undefined
-        ) {
-            return;
-        }
-
-        if (
-            !newTitle ||
-            typeof newTitle !== "string" ||
-            newTitle.trim().length <= 0
-        ) {
+        if (typeof newTitle !== "string" || !newTitle.trim()) {
             throw new Error("Project title must be a non-empty string");
         }
 
@@ -70,12 +72,38 @@ export class Project {
             throw new Error("Must be an instance of Todo");
         }
 
+        this.#todoCount++;
+
+        if (todo.checklist) {
+            this.#completedTodo++;
+        }
+
         this.#todoList.push(todo);
     }
 
+    toggleTodoChecklist(todoId) {
+        if (typeof todoId !== "string" || !todoId.trim()) {
+            throw new Error("todoId must be a non-empty string");
+        }
+
+        const todo = this.#todoList.find((item) => item.id === todoId);
+
+        if (!todo) {
+            throw new Error("Todo not found");
+        }
+
+        todo.toggleChecklist();
+
+        if (todo.checklist) {
+            this.#completedTodo++;
+        } else {
+            this.#completedTodo--;
+        }
+    }
+
     removeTodo(todoId) {
-        if (!todoId || typeof todoId !== "string") {
-            throw new Error("todoId must be a string");
+        if (typeof todoId !== "string" || !todoId.trim()) {
+            throw new Error("todoId must be a non-empty string");
         }
 
         const todoIndex = this.#todoList.findIndex(
@@ -83,14 +111,19 @@ export class Project {
         );
 
         if (todoIndex !== -1) {
+            const removedTodo = this.#todoList[todoIndex];
+
+            if (removedTodo.checklist) {
+                this.#completedTodo--;
+            }
+
             this.#todoList.splice(todoIndex, 1);
+            this.#todoCount--;
         }
     }
 
     getCompletedTodoCount() {
-        return this.#todoList.filter((item) => {
-            return item.checklist;
-        }).length;
+        return this.#completedTodo;
     }
 
     getCompletionPercentage() {
@@ -98,6 +131,6 @@ export class Project {
             return 0;
         }
 
-        return (this.getCompletedTodoCount() / this.#todoList.length) * 100;
+        return ((this.#completedTodo / this.#todoCount) * 100).toFixed(2);
     }
 }
