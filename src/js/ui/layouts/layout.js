@@ -3,10 +3,14 @@ import { DialogFormType } from "../../enums/DialogFormType.js";
 import folderPlusSvg from "../../../assets/icons/folder-plus.svg";
 import calendarPlus2Svg from "../../../assets/icons/calendar-plus-2.svg";
 
-export function initializeLayout() {
+export function initializeLayout(onProjectSubmit, onTodoSubmit) {
     const content = document.querySelector("#content");
-    const projectDialogForm = DialogForm(DialogFormType.PROJECT);
-    const todoDialogForm = DialogForm(DialogFormType.TODO);
+    const projectDialogForm = DialogForm(
+        DialogFormType.PROJECT,
+        null,
+        onProjectSubmit,
+    );
+    const todoDialogForm = DialogForm(DialogFormType.TODO, null, onTodoSubmit);
 
     const mainGrid = document.createElement("div");
     mainGrid.className = "main-grid";
@@ -28,19 +32,19 @@ export function initializeLayout() {
     const projectList = document.createElement("div");
     projectList.className = "project-list";
 
-    const project = document.createElement("div");
-    project.className = "project";
-    project.appendChild(document.createElement("h3")).textContent =
-        "The Odin Project";
+    // const project = document.createElement("div");
+    // project.className = "project";
+    // project.appendChild(document.createElement("h3")).textContent =
+    //     "The Odin Project";
 
-    projectList.appendChild(project);
+    // projectList.appendChild(project);
 
-    const project2 = document.createElement("div");
-    project2.className = "project";
-    project2.appendChild(document.createElement("h3")).textContent =
-        "The Odin ";
+    // const project2 = document.createElement("div");
+    // project2.className = "project";
+    // project2.appendChild(document.createElement("h3")).textContent =
+    //     "The Odin ";
 
-    projectList.appendChild(project2);
+    // projectList.appendChild(project2);
 
     projectsWrapper.appendChild(projectList);
 
