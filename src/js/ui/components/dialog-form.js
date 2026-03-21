@@ -25,15 +25,15 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
         form.appendChild(todoTitleInputField);
 
         const projectTitleLabel = document.createElement("label");
-        projectTitleLabel.setAttribute("for", "projectTitle");
+        projectTitleLabel.setAttribute("for", "title");
         projectTitleLabel.textContent = "Project Title*";
 
         todoTitleInputField.appendChild(projectTitleLabel);
 
         const projectTitleInput = document.createElement("input");
         projectTitleInput.type = "text";
-        projectTitleInput.name = "projectTitle";
-        projectTitleInput.id = "projectTitle";
+        projectTitleInput.name = "title";
+        projectTitleInput.id = "title";
 
         todoTitleInputField.appendChild(projectTitleInput);
 
@@ -92,15 +92,15 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
         form.appendChild(todoTitleInputField);
 
         const todoTitleLabel = document.createElement("label");
-        todoTitleLabel.setAttribute("for", "todoTitle");
+        todoTitleLabel.setAttribute("for", "title");
         todoTitleLabel.textContent = "Todo Title*";
 
         todoTitleInputField.appendChild(todoTitleLabel);
 
         const todoTitleInput = document.createElement("input");
         todoTitleInput.type = "text";
-        todoTitleInput.name = "todoTitle";
-        todoTitleInput.id = "todoTitle";
+        todoTitleInput.name = "title";
+        todoTitleInput.id = "title";
 
         todoTitleInputField.appendChild(todoTitleInput);
 
@@ -111,14 +111,14 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
         form.appendChild(todoDescriptionInputField);
 
         const todoDescriptionLabel = document.createElement("label");
-        todoDescriptionLabel.setAttribute("for", "todoDescription");
+        todoDescriptionLabel.setAttribute("for", "description");
         todoDescriptionLabel.textContent = "Todo Description";
 
         todoDescriptionInputField.appendChild(todoDescriptionLabel);
 
         const todoDescriptionInput = document.createElement("textarea");
-        todoDescriptionInput.name = "todoDescription";
-        todoDescriptionInput.id = "todoDescription";
+        todoDescriptionInput.name = "description";
+        todoDescriptionInput.id = "description";
 
         todoDescriptionInputField.appendChild(todoDescriptionInput);
 
@@ -129,14 +129,14 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
         form.appendChild(todoNotesInputField);
 
         const todoNotesLabel = document.createElement("label");
-        todoNotesLabel.setAttribute("for", "todoNotes");
+        todoNotesLabel.setAttribute("for", "notes");
         todoNotesLabel.textContent = "Todo Notes";
 
         todoNotesInputField.appendChild(todoNotesLabel);
 
         const todoNotesInput = document.createElement("textarea");
-        todoNotesInput.name = "todoNotes";
-        todoNotesInput.id = "todoNotes";
+        todoNotesInput.name = "notes";
+        todoNotesInput.id = "notes";
 
         todoNotesInputField.appendChild(todoNotesInput);
 
@@ -147,14 +147,14 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
         form.appendChild(todoPriorityInputField);
 
         const todoPriorityLabel = document.createElement("label");
-        todoPriorityLabel.setAttribute("for", "todoPriority");
+        todoPriorityLabel.setAttribute("for", "priority");
         todoPriorityLabel.textContent = "Todo Priority";
 
         todoPriorityInputField.appendChild(todoPriorityLabel);
 
         const todoPrioritySelect = document.createElement("select");
-        todoPrioritySelect.name = "todoPriority";
-        todoPrioritySelect.id = "todoPriority";
+        todoPrioritySelect.name = "priority";
+        todoPrioritySelect.id = "priority";
 
         todoPriorityInputField.appendChild(todoPrioritySelect);
 
@@ -167,23 +167,23 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
         }
 
         // Todo Due Datetime
-        const todoDueDatetimeField = document.createElement("p");
-        todoDueDatetimeField.className = "input-field";
+        const todoDueDateTimeField = document.createElement("p");
+        todoDueDateTimeField.className = "input-field";
 
-        form.appendChild(todoDueDatetimeField);
+        form.appendChild(todoDueDateTimeField);
 
-        const todoDueDatetimeLabel = document.createElement("label");
-        todoDueDatetimeLabel.setAttribute("for", "todoDueDatetime");
-        todoDueDatetimeLabel.textContent = "Todo Due Datetime*";
+        const todoDueDateTimeLabel = document.createElement("label");
+        todoDueDateTimeLabel.setAttribute("for", "dueDateTime");
+        todoDueDateTimeLabel.textContent = "Todo Due DateTime";
 
-        todoDueDatetimeField.appendChild(todoDueDatetimeLabel);
+        todoDueDateTimeField.appendChild(todoDueDateTimeLabel);
 
-        const todoDueDatetimeInput = document.createElement("input");
-        todoDueDatetimeInput.type = "datetime-local";
-        todoDueDatetimeInput.name = "todoDueDatetime";
-        todoDueDatetimeInput.id = "todoDueDatetime";
+        const todoDueDateTimeInput = document.createElement("input");
+        todoDueDateTimeInput.type = "datetime-local";
+        todoDueDateTimeInput.name = "dueDateTime";
+        todoDueDateTimeInput.id = "dueDateTime";
 
-        todoDueDatetimeField.appendChild(todoDueDatetimeInput);
+        todoDueDateTimeField.appendChild(todoDueDateTimeInput);
 
         const dialogFormActions = document.createElement("div");
         dialogFormActions.className = "dialog-form-actions";
@@ -195,7 +195,7 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
             todoDescriptionInput.value = initialData.description || "";
             todoNotesInput.value = initialData.notes || "";
             todoPrioritySelect.value = initialData.priority;
-            todoDueDatetimeInput.value = initialData.dueDateTime;
+            todoDueDatetimeInput.value = initialData.dueDatetime || "";
         }
 
         const submitBtn = document.createElement("button");
