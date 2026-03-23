@@ -1,8 +1,15 @@
 import "../css/style.css";
 import { initializeLayout } from "./ui/layouts/layout.js";
 import { renderProjects, renderTodos } from "./ui/dom-renderers.js";
+import { DialogFormType } from "./enums/DialogFormType.js";
+import { DialogForm } from "./ui/components/dialog-form.js";
 import { getProjects } from "./services/local-storage-service.js";
-import { createProject, addTodoToProject } from "./services/project-service.js";
+import {
+    createProject,
+    updateProject,
+    deleteProject,
+    addTodoToProject,
+} from "./services/project-service.js";
 
 initializeLayout(
     (data) => {
@@ -20,6 +27,7 @@ initializeLayout(
     },
 );
 
+const mainContainer = document.querySelector("#content");
 const projectListContainer = document.querySelector(".project-list");
 const todoListContainer = document.querySelector(".todo-list");
 
@@ -36,6 +44,38 @@ function updateScreen() {
         (clickedId) => {
             activeProjectId = clickedId;
             updateScreen();
+        },
+        (clickedId) => {
+            const project = myProjects.find((p) => p.id === clickedId);
+
+            const editDialogForm = DialogForm(
+                DialogFormType.PROJECT,
+                project,
+                (data) => {
+                    updateProject(project.id, data);
+                    updateScreen();
+                },
+            );
+
+            mainContainer.appendChild(editDialogForm);
+
+            editDialogForm.showModal();
+        },
+        (clickedId) => {
+            const project = myProjects.find((p) => p.id === clickedId);
+
+            const deleteDialogForm = DialogForm(
+                DialogFormType.DELETE_PROJECT_CONFIRM,
+                project,
+                (data) => {
+                    deleteProject(project.id);
+                    updateScreen();
+                },
+            );
+
+            mainContainer.appendChild(deleteDialogForm);
+
+            deleteDialogForm.showModal();
         },
     );
 

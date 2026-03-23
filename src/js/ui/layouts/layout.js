@@ -116,6 +116,6 @@ export function initializeLayout(onProjectSubmit, onTodoSubmit) {
     todoList.appendChild(todo2);
 
     todosWrapper.appendChild(todoList);
-    mainGrid.appendChild(projectDialogForm);
-    mainGrid.appendChild(todoDialogForm);
+    content.appendChild(projectDialogForm);
+    content.appendChild(todoDialogForm);
 }

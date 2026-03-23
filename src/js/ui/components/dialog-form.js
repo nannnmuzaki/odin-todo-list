@@ -81,6 +81,16 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
             dialog.close();
         });
 
+        dialog.addEventListener("close", () => {
+            if (initialData) {
+                dialog.remove();
+            }
+
+            form.reset();
+            formError.style.display = "none";
+            formError.textContent = "";
+        });
+
         dialogFormActions.appendChild(cancelBtn);
     } else if (formType === DialogFormType.TODO) {
         dialog.setAttribute("form-type", DialogFormType.TODO);
@@ -195,7 +205,7 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
             todoDescriptionInput.value = initialData.description || "";
             todoNotesInput.value = initialData.notes || "";
             todoPrioritySelect.value = initialData.priority;
-            todoDueDatetimeInput.value = initialData.dueDatetime || "";
+            todoDueDateTimeInput.value = initialData.dueDatetime || "";
         }
 
         const submitBtn = document.createElement("button");
@@ -230,6 +240,16 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
         cancelBtn.type = "button";
         cancelBtn.addEventListener("click", () => {
             dialog.close();
+        });
+
+        dialog.addEventListener("close", () => {
+            if (initialData) {
+                dialog.remove();
+            }
+
+            form.reset();
+            formError.style.display = "none";
+            formError.textContent = "";
         });
 
         dialogFormActions.appendChild(cancelBtn);
@@ -273,6 +293,10 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
             cancelBtn.textContent = "Cancel";
             cancelBtn.addEventListener("click", () => dialog.close());
             dialogFormActions.appendChild(cancelBtn);
+
+            dialog.addEventListener("close", () => {
+                dialog.remove();
+            });
         } else {
             throw new Error("No Project is selected");
         }
@@ -316,18 +340,16 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
             cancelBtn.textContent = "Cancel";
             cancelBtn.addEventListener("click", () => dialog.close());
             dialogFormActions.appendChild(cancelBtn);
+
+            dialog.addEventListener("close", () => {
+                dialog.remove();
+            });
         } else {
             throw new Error("No Todo is selected");
         }
     } else {
         throw new Error("Must be a valid type of Dialog Form");
     }
-
-    dialog.addEventListener("close", () => {
-        form.reset();
-        formError.style.display = "none";
-        formError.textContent = "";
-    });
 
     return dialog;
 }
