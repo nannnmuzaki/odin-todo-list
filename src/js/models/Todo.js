@@ -112,11 +112,8 @@ export class Todo {
 
         const parsedNewDueDateTimeString = parseISO(newDueDateTimeString);
 
-        if (
-            !isValid(parsedNewDueDateTimeString) ||
-            isBefore(parsedNewDueDateTimeString, new Date())
-        ) {
-            throw new Error("Due DateTime must be valid and in the future");
+        if (!isValid(parsedNewDueDateTimeString)) {
+            throw new Error("Due DateTime must be valid");
         }
 
         this.#dueDateTime = newDueDateTimeString;
