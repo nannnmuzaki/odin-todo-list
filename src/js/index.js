@@ -3,6 +3,7 @@ import { initializeLayout } from "./ui/layouts/layout.js";
 import { renderProjects, renderTodos } from "./ui/dom-renderers.js";
 import { DialogFormType } from "./enums/DialogFormType.js";
 import { DialogForm } from "./ui/components/dialog-form.js";
+import { DialogTodoDetails } from "./ui/components/dialog-todo-details.js";
 import { getProjects } from "./services/local-storage-service.js";
 import {
     createProject,
@@ -67,7 +68,7 @@ function updateScreen() {
             const deleteDialogForm = DialogForm(
                 DialogFormType.DELETE_PROJECT_CONFIRM,
                 project,
-                (data) => {
+                () => {
                     deleteProject(project.id);
                     updateScreen();
                 },
@@ -81,7 +82,45 @@ function updateScreen() {
 
     const activeProject = myProjects.find((p) => p.id === activeProjectId);
     if (activeProject) {
-        renderTodos(activeProject.getTodos(), todoListContainer);
+        renderTodos(
+            activeProject.getTodos(),
+            todoListContainer,
+            (clickedId) => {
+                const todo = activeProject
+                    .getTodos()
+                    .find((t) => t.id === clickedId);
+                const detailsDialog = new DialogTodoDetails(todo);
+                mainContainer.appendChild(detailsDialog);
+
+                detailsDialog.showModal();
+            },
+            (clickedId) => {
+                const todo = activeProject
+                    .getTodos()
+                    .find((t) => t.id === clickedId);
+                const editDialogForm = new DialogForm(
+                    DialogFormType.TODO,
+                    todo,
+                    (data) => {}, // WIP
+                );
+                mainContainer.appendChild(detailsTodoDialog);
+
+                detailsTodoDialog.showModal();
+            },
+            (clickedId) => {
+                const todo = activeProject
+                    .getTodos()
+                    .find((t) => t.id === clickedId);
+                const deleteDialog = new DialogForm(
+                    DialogFormType.DELETE_TODO_CONFIRM,
+                    todo,
+                    () => {}, // WIP
+                );
+                mainContainer.appendChild(detailsTodoDialog);
+
+                detailsTodoDialog.showModal();
+            },
+        );
     } else {
         todoListContainer.innerHTML = "<p>Select or create a project.</p>";
     }

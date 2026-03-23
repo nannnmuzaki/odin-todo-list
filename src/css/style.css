@@ -30,6 +30,8 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     font-family: "Space Grotesk", sans-serif;
+    scrollbar-color: #fff #000;
+    scrollbar-width: thin;
 }
 
 img,
@@ -146,7 +148,7 @@ h6 {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     align-items: center;
     scrollbar-color: #fff #000;
     scrollbar-width: thin;
@@ -225,7 +227,7 @@ h6 {
     padding: 1rem 2rem;
     gap: 1rem;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     align-items: flex-start;
     scrollbar-color: #fff #000;
     scrollbar-width: thin;
@@ -249,22 +251,51 @@ h6 {
     box-shadow: 4px 4px 0 black;
 }
 
-.dialog[form-type="PROJECT"] {
-    background: hsl(214, 33%, 96%);
-    backdrop-filter: blur(10px);
-    border: 2px solid black;
-    box-shadow: 6px 6px 0 black;
-    padding: 0;
-    margin: 0;
-    width: 90%;
-    max-width: 480px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -100%);
+.todo.done {
+    background-color: rgba(0, 0, 0, 0.05);
+    opacity: 0.7;
 }
 
-.dialog[form-type="TODO"] {
+.todo-header {
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    word-break: break-word;
+}
+
+.todo-header.done {
+    text-decoration: line-through;
+}
+
+.todo-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.status-btn {
+    flex-grow: 1;
+}
+
+.btn-icon.no-margin {
+    margin: 0;
+}
+
+.dialog {
     background: hsl(214, 33%, 96%);
     backdrop-filter: blur(10px);
     border: 2px solid black;
@@ -273,40 +304,99 @@ h6 {
     margin: 0;
     width: 90%;
     max-width: 480px;
+    max-height: 90%;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    scrollbar-color: #fff #000;
+    scrollbar-width: thin;
+}
+
+.dialog[form-type="PROJECT"] {
+    transform: translate(-50%, -100%);
+}
+
+.dialog[form-type="TODO"] {
+    transform: translate(-50%, -50%);
 }
 
 .dialog[form-type="DELETE_PROJECT_CONFIRM"] {
-    background: hsl(214, 33%, 96%);
-    backdrop-filter: blur(10px);
-    border: 2px solid black;
-    box-shadow: 6px 6px 0 black;
-    padding: 0;
-    margin: 0;
-    width: 90%;
-    max-width: 480px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -100%);
 }
 
 .dialog[form-type="DELETE_TODO_CONFIRM"] {
-    background: hsl(214, 33%, 96%);
-    backdrop-filter: blur(10px);
-    border: 2px solid black;
-    box-shadow: 6px 6px 0 black;
-    padding: 0;
-    margin: 0;
-    width: 90%;
-    max-width: 480px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -100%);
+}
+
+.dialog[form-type="TODO_DETAILS"] {
+    transform: translate(-50%, -50%);
+}
+
+.todo-details-container {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.todo-details-title {
+    border-bottom: 4px solid black;
+    padding-bottom: 0.5rem;
+    margin: 0;
+    word-break: break-word;
+}
+
+.todo-details-title.done {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.todo-details-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.todo-details-meta-item {
+    border: 2px solid black;
+    padding: 0.5rem;
+}
+
+.todo-details-meta-item.span-2 {
+    grid-column: span 2;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.todo-details-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-details-label {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.todo-details-content {
+    border: 2px solid black;
+    padding: 1rem;
+    min-height: 2rem;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+    white-space: pre-wrap;
+    scrollbar-color: #fff #000;
+    scrollbar-width: thin;
+}
+
+.todo-details-close-btn {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-weight: 700;
+    width: 100%;
 }
 
 .dialog::backdrop {
