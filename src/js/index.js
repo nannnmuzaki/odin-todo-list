@@ -129,6 +129,15 @@ function updateScreen() {
 
                 deleteDialogForm.showModal();
             },
+            (clickedId) => {
+                const todo = activeProject
+                    .getTodos()
+                    .find((t) => t.id === clickedId);
+
+                checklistTodo(activeProjectId, todo.id);
+
+                updateScreen();
+            },
         );
     } else {
         todoListContainer.innerHTML = "<p>Select or create a project.</p>";
