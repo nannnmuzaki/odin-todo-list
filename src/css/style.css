@@ -433,6 +433,13 @@ option {
     background-color: transparent;
 }
 
+.input-field > textarea {
+    height: 100px;
+    overflow-y: auto;
+    scrollbar-color: #fff #000;
+    scrollbar-width: thin;
+}
+
 .input-field > input[type="text"]:focus,
 textarea:focus,
 select:focus,

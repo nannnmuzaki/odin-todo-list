@@ -10,6 +10,9 @@ import {
     updateProject,
     deleteProject,
     addTodoToProject,
+    updateTodoFromProject,
+    deleteTodoFromProject,
+    checklistTodo,
 } from "./services/project-service.js";
 
 initializeLayout(
@@ -101,11 +104,14 @@ function updateScreen() {
                 const editDialogForm = new DialogForm(
                     DialogFormType.TODO,
                     todo,
-                    (data) => {}, // WIP
+                    (data) => {
+                        updateTodoFromProject(activeProjectId, todo.id, data);
+                        updateScreen();
+                    }, // WIP
                 );
-                mainContainer.appendChild(detailsTodoDialog);
+                mainContainer.appendChild(editDialogForm);
 
-                detailsTodoDialog.showModal();
+                editDialogForm.showModal();
             },
             (clickedId) => {
                 const todo = activeProject
@@ -116,9 +122,9 @@ function updateScreen() {
                     todo,
                     () => {}, // WIP
                 );
-                mainContainer.appendChild(detailsTodoDialog);
+                mainContainer.appendChild(deleteDialogForm);
 
-                detailsTodoDialog.showModal();
+                deleteDialogForm.showModal();
             },
         );
     } else {
