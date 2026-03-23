@@ -32,20 +32,6 @@ export function initializeLayout(onProjectSubmit, onTodoSubmit) {
     const projectList = document.createElement("div");
     projectList.className = "project-list";
 
-    // const project = document.createElement("div");
-    // project.className = "project";
-    // project.appendChild(document.createElement("h3")).textContent =
-    //     "The Odin Project";
-
-    // projectList.appendChild(project);
-
-    // const project2 = document.createElement("div");
-    // project2.className = "project";
-    // project2.appendChild(document.createElement("h3")).textContent =
-    //     "The Odin ";
-
-    // projectList.appendChild(project2);
-
     projectsWrapper.appendChild(projectList);
 
     const todosWrapper = document.createElement("div");
