@@ -205,7 +205,7 @@ export function DialogForm(formType, initialData, onSubmitCallback) {
             todoDescriptionInput.value = initialData.description || "";
             todoNotesInput.value = initialData.notes || "";
             todoPrioritySelect.value = initialData.priority;
-            todoDueDateTimeInput.value = initialData.dueDatetime || "";
+            todoDueDateTimeInput.value = initialData.dueDateTime || "";
         }
 
         const submitBtn = document.createElement("button");
