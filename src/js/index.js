@@ -92,7 +92,7 @@ function updateScreen() {
                 const todo = activeProject
                     .getTodos()
                     .find((t) => t.id === clickedId);
-                const detailsDialog = new DialogTodoDetails(todo);
+                const detailsDialog = DialogTodoDetails(todo);
                 mainContainer.appendChild(detailsDialog);
 
                 detailsDialog.showModal();
@@ -101,7 +101,7 @@ function updateScreen() {
                 const todo = activeProject
                     .getTodos()
                     .find((t) => t.id === clickedId);
-                const editDialogForm = new DialogForm(
+                const editDialogForm = DialogForm(
                     DialogFormType.TODO,
                     todo,
                     (data) => {
@@ -117,7 +117,7 @@ function updateScreen() {
                 const todo = activeProject
                     .getTodos()
                     .find((t) => t.id === clickedId);
-                const deleteDialogForm = new DialogForm(
+                const deleteDialogForm = DialogForm(
                     DialogFormType.DELETE_TODO_CONFIRM,
                     todo,
                     () => {
