@@ -107,7 +107,7 @@ function updateScreen() {
                     (data) => {
                         updateTodoFromProject(activeProjectId, todo.id, data);
                         updateScreen();
-                    }, // WIP
+                    },
                 );
                 mainContainer.appendChild(editDialogForm);
 
@@ -117,10 +117,13 @@ function updateScreen() {
                 const todo = activeProject
                     .getTodos()
                     .find((t) => t.id === clickedId);
-                const deleteDialog = new DialogForm(
+                const deleteDialogForm = new DialogForm(
                     DialogFormType.DELETE_TODO_CONFIRM,
                     todo,
-                    () => {}, // WIP
+                    () => {
+                        deleteTodoFromProject(activeProjectId, todo.id);
+                        updateScreen();
+                    },
                 );
                 mainContainer.appendChild(deleteDialogForm);
 
