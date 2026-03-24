@@ -1,8 +1,8 @@
 @font-face {
-    font-family: "Space Grotesk";
-    src: url("../fonts/SpaceGrotesk-VariableFont_wght.woff2") format("woff2");
-    font-weight: 200 700;
-    font-style: normal;
+  font-family: "Space Grotesk";
+  src: url("../fonts/SpaceGrotesk-VariableFont_wght.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
 }
 
 /*
@@ -13,25 +13,25 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *:not(dialog) {
-    margin: 0;
+  margin: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    html {
-        interpolate-size: allow-keywords;
-    }
+  html {
+    interpolate-size: allow-keywords;
+  }
 }
 
 body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Space Grotesk", sans-serif;
-    scrollbar-color: #fff #000;
-    scrollbar-width: thin;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Space Grotesk", sans-serif;
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
 }
 
 img,
@@ -39,15 +39,15 @@ picture,
 video,
 canvas,
 svg {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
 }
 
 p,
@@ -57,11 +57,11 @@ h3,
 h4,
 h5,
 h6 {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 p {
-    text-wrap: pretty;
+  text-wrap: pretty;
 }
 h1,
 h2,
@@ -69,403 +69,403 @@ h3,
 h4,
 h5,
 h6 {
-    text-wrap: balance;
+  text-wrap: balance;
 }
 
 #root,
 #__next {
-    isolation: isolate;
+  isolation: isolate;
 }
 
 #content {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .main-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    height: calc(100vh - 2rem);
-    border: 2px solid black;
-    margin: 1rem;
-    box-shadow: 4px 4px 0 black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: calc(100vh - 2rem);
+  border: 2px solid black;
+  margin: 1rem;
+  box-shadow: 4px 4px 0 black;
 }
 
 .projects-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-column: span 1;
-    border-right: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: span 1;
+  border-right: 2px solid black;
 }
 
 .projects-header {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    gap: 1rem;
-    border-bottom: 2px solid black;
-    padding: 1rem 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1rem;
+  border-bottom: 2px solid black;
+  padding: 1rem 2rem;
 }
 
 .action-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    font-weight: 500;
-    padding: 0.25rem 1rem;
-    border: 2px solid black;
-    box-shadow: 4px 4px 0 black;
-    transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  font-weight: 500;
+  padding: 0.25rem 1rem;
+  border: 2px solid black;
+  box-shadow: 4px 4px 0 black;
+  transition: all 0.2s ease;
 }
 
 .btn-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1.25rem;
-    height: 1.25rem;
-    margin-right: 0.35rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.35rem;
 }
 
 .btn-icon > svg {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .action-btn:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 6px 6px 0 black;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 6px 6px 0 black;
 }
 
 .project-list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    align-items: center;
-    scrollbar-color: #fff #000;
-    scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  align-items: center;
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
 }
 
 .project {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 1rem 0;
-    border-bottom: 2px solid black;
-    transition: all 0.2 ease-in-out;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+  border-bottom: 2px solid black;
+  transition: all 0.2 ease-in-out;
 }
 
 .project.active {
-    background-size: 10px 10px;
-    background-image: repeating-linear-gradient(
-        -45deg,
-        #000000 0,
-        #000000 0.2px,
-        #ffffff 0,
-        #ffffff 50%
-    );
+  background-size: 10px 10px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #000000 0,
+    #000000 0.2px,
+    #ffffff 0,
+    #ffffff 50%
+  );
 }
 
 .project > .action-btn {
-    padding: 0.1rem 0.25rem;
-    margin-left: 0.5rem;
-    box-shadow: 2px 2px 0 black;
+  padding: 0.1rem 0.25rem;
+  margin-left: 0.5rem;
+  box-shadow: 2px 2px 0 black;
 }
 
 .project > .action-btn:hover {
-    background-color: #efefef;
-    box-shadow: 3px 3px 0 black;
+  background-color: #efefef;
+  box-shadow: 3px 3px 0 black;
 }
 
 .project .btn-icon {
-    width: 1rem;
-    height: 1rem;
-    margin: 0;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
 }
 
 .project:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .todos-wrapper {
-    grid-column: span 3;
-    display: flex;
-    min-height: 0;
-    flex-direction: column;
+  grid-column: span 3;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
 }
 
 .todos-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    border-bottom: 2px solid black;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid black;
 }
 
 .actions-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 1rem;
 }
 
 .todo-list {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
-    padding: 1rem 2rem;
-    gap: 1rem;
-    height: 100%;
-    overflow-y: auto;
-    align-items: flex-start;
-    scrollbar-color: #fff #000;
-    scrollbar-width: thin;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  padding: 1rem 2rem;
+  gap: 1rem;
+  height: 100%;
+  overflow-y: auto;
+  align-items: flex-start;
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
 }
 
 .todo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 250px;
-    gap: 0.25rem;
-    padding: 1rem;
-    border: 2px solid black;
-    box-shadow: 2px 2px 0 black;
-    transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 250px;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 2px solid black;
+  box-shadow: 2px 2px 0 black;
+  transition: all 0.2s ease;
 }
 
 .todo:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 4px 4px 0 black;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 0 black;
 }
 
 .todo.done {
-    background-color: rgba(0, 0, 0, 0.05);
-    opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.05);
+  opacity: 0.7;
 }
 
 .todo-header {
-    width: 100%;
-    border-bottom: 2px solid black;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    word-break: break-word;
+  width: 100%;
+  border-bottom: 2px solid black;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  word-break: break-word;
 }
 
 .todo-header.done {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .todo-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .todo-actions {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: auto;
-    width: 100%;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .status-btn {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .btn-icon.no-margin {
-    margin: 0;
+  margin: 0;
 }
 
 .dialog {
-    background: hsl(214, 33%, 96%);
-    backdrop-filter: blur(10px);
-    border: 2px solid black;
-    box-shadow: 6px 6px 0 black;
-    padding: 0;
-    margin: 0;
-    width: 90%;
-    max-width: 480px;
-    max-height: 90%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    scrollbar-color: #fff #000;
-    scrollbar-width: thin;
+  background: hsl(214, 33%, 96%);
+  backdrop-filter: blur(10px);
+  border: 2px solid black;
+  box-shadow: 6px 6px 0 black;
+  padding: 0;
+  margin: 0;
+  width: 90%;
+  max-width: 480px;
+  max-height: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
 }
 
 .dialog[form-type="PROJECT"] {
-    transform: translate(-50%, -100%);
+  transform: translate(-50%, -100%);
 }
 
 .dialog[form-type="TODO"] {
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .dialog[form-type="DELETE_PROJECT_CONFIRM"] {
-    transform: translate(-50%, -100%);
+  transform: translate(-50%, -100%);
 }
 
 .dialog[form-type="DELETE_TODO_CONFIRM"] {
-    transform: translate(-50%, -100%);
+  transform: translate(-50%, -100%);
 }
 
 .dialog[form-type="TODO_DETAILS"] {
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .todo-details-container {
-    padding: 2rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .todo-details-title {
-    border-bottom: 4px solid black;
-    padding-bottom: 0.5rem;
-    margin: 0;
-    word-break: break-word;
+  border-bottom: 4px solid black;
+  padding-bottom: 0.5rem;
+  margin: 0;
+  word-break: break-word;
 }
 
 .todo-details-title.done {
-    text-decoration: line-through;
-    color: rgba(0, 0, 0, 0.6);
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .todo-details-meta-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    font-weight: 600;
-    font-size: 0.9rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .todo-details-meta-item {
-    border: 2px solid black;
-    padding: 0.5rem;
+  border: 2px solid black;
+  padding: 0.5rem;
 }
 
 .todo-details-meta-item.span-2 {
-    grid-column: span 2;
-    background-color: rgba(0, 0, 0, 0.05);
+  grid-column: span 2;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .todo-details-section {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .todo-details-label {
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
 .todo-details-content {
-    border: 2px solid black;
-    padding: 1rem;
-    min-height: 2rem;
-    max-height: 200px;
-    overflow-y: auto;
-    margin: 0;
-    white-space: pre-wrap;
-    scrollbar-color: #fff #000;
-    scrollbar-width: thin;
+  border: 2px solid black;
+  padding: 1rem;
+  min-height: 2rem;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  white-space: pre-wrap;
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
 }
 
 .todo-details-close-btn {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    font-weight: 700;
-    width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-weight: 700;
+  width: 100%;
 }
 
 .dialog::backdrop {
-    background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
 }
 
 .form > .input-field {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
 }
 
 .form > .form-error {
-    display: none;
-    padding: 1rem 1.5rem;
-    background-color: hsl(0, 68%, 74%);
+  display: none;
+  padding: 1rem 1.5rem;
+  background-color: hsl(0, 68%, 74%);
 }
 
 .input-field > input[type="text"],
 textarea,
 select,
 option {
-    border-radius: 0;
-    border: 2px solid rgba(0, 0, 0, 0.8);
-    padding: 8px 12px;
-    background-color: transparent;
+  border-radius: 0;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  padding: 8px 12px;
+  background-color: transparent;
 }
 
 .input-field > textarea {
-    height: 100px;
-    overflow-y: auto;
-    scrollbar-color: #fff #000;
-    scrollbar-width: thin;
+  height: 100px;
+  overflow-y: auto;
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
 }
 
 .input-field > input[type="text"]:focus,
 textarea:focus,
 select:focus,
 option:focus {
-    outline: none;
+  outline: none;
 }
 
 .input-field > input[type="datetime-local"] {
-    border-radius: 0;
-    border: 2px solid rgba(0, 0, 0, 0.8);
-    padding: 8px 12px;
-    background-color: transparent;
+  border-radius: 0;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  padding: 8px 12px;
+  background-color: transparent;
 }
 
 .input-field > input[type="datetime-local"]:focus {
-    outline: none;
+  outline: none;
 }
 
 .input-field > label {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .form > .dialog-form-actions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1rem;
 }
